@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <mvc:annotation-driven/>
+    <context:annotation-config/>
+<!--    <import resource="classpath:kafka-consumer.xml"/>-->
+    <import resource="classpath:kafka-producer.xml"/>
+    <context:component-scan base-package="mvn.com"/>
+	<bean id="viewResolver2"  
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+        <property name="viewClass"  
+            value="org.springframework.web.servlet.view.JstlView"></property>  
+        <property name="prefix" value="/view/"></property>  
+        <property name="suffix" value=".jsp"></property>  
+        <property name="order" value="0"></property>  
+    </bean>  
+
+    <bean id="viewResolver1" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/view/"/>
+        <property name="suffix" value=".html"/>
+        <property name="contentType" value="text/html;charset=UTF-8"></property>  
+        <property name="order" value="1"></property>
+    </bean>
+</beans>
